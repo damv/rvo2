@@ -317,6 +317,7 @@ namespace RVO {
 	{
 		delete agents_[agentNo];
 		agents_.erase(agents_.begin() + agentNo);
+		return 0;
 	}
 
 	void RVOSimulator::setAgentDefaults(float neighborDist, size_t maxNeighbors, float timeHorizon, float timeHorizonObst, float radius, float maxSpeed, const Vector2 &velocity)

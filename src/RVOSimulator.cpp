@@ -41,12 +41,12 @@
 #endif
 
 namespace RVO {
-	RVOSimulator::RVOSimulator() : defaultAgent_(NULL), globalTime_(0.0f), kdTree_(NULL), timeStep_(0.0f)
+	RVOSimulator::RVOSimulator() : defaultAgent_(NULL), globalTime_(0.0f), kdTree_(NULL), timeStep_(0.0f), uid_(0)
 	{
 		kdTree_ = new KdTree(this);
 	}
 
-	RVOSimulator::RVOSimulator(float timeStep, float neighborDist, size_t maxNeighbors, float timeHorizon, float timeHorizonObst, float radius, float maxSpeed, const Vector2 &velocity) : defaultAgent_(NULL), globalTime_(0.0f), kdTree_(NULL), timeStep_(timeStep)
+	RVOSimulator::RVOSimulator(float timeStep, float neighborDist, size_t maxNeighbors, float timeHorizon, float timeHorizonObst, float radius, float maxSpeed, const Vector2 &velocity) : defaultAgent_(NULL), globalTime_(0.0f), kdTree_(NULL), timeStep_(timeStep), uid_(0)
 	{
 		kdTree_ = new KdTree(this);
 		defaultAgent_ = new Agent(this);
@@ -95,6 +95,8 @@ namespace RVO {
 		agent->velocity_ = defaultAgent_->velocity_;
 
 		agent->id_ = agents_.size();
+
+		agent->uid_ = uid_++;
 
 		agents_.push_back(agent);
 
@@ -300,6 +302,21 @@ namespace RVO {
 	bool RVOSimulator::queryVisibility(const Vector2 &point1, const Vector2 &point2, float radius) const
 	{
 		return kdTree_->queryVisibility(point1, point2, radius);
+	}
+
+	int RVOSimulator::getIndex(int uid)
+	{
+		for (size_t i = 0; i < agents_.size(); ++i) {
+			if (agents_[i]->uid_ == uid)
+				return i;
+		}
+		return -1;
+	}
+
+	int RVOSimulator::removeAgent(size_t agentNo)
+	{
+		delete agents_[agentNo];
+		agents_.erase(agents_.begin() + agentNo);
 	}
 
 	void RVOSimulator::setAgentDefaults(float neighborDist, size_t maxNeighbors, float timeHorizon, float timeHorizonObst, float radius, float maxSpeed, const Vector2 &velocity)

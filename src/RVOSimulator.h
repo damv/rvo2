@@ -439,6 +439,15 @@ namespace RVO {
 							 float radius = 0.0f) const;
 
 		/**
+		 * \brief      Removes the specified agent of the simulation.
+		 * \param      agentNo         The number of the agent who must be removed.
+		 * \return     0 if the agent has been successfully removed, -1 else.
+		 */
+		int removeAgent(size_t agentNo);
+
+		int getIndex(int uid);
+
+		/**
 		 * \brief      Sets the default properties for any new agent that is
 		 *             added.
 		 * \param      neighborDist    The default maximum distance (center point
@@ -582,6 +591,7 @@ namespace RVO {
 		KdTree *kdTree_;
 		std::vector<Obstacle *> obstacles_;
 		float timeStep_;
+		int uid_;
 
 		friend class Agent;
 		friend class KdTree;

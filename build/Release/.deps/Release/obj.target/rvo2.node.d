@@ -1,1 +1,0 @@
-cmd_Release/obj.target/rvo2.node := g++ -shared -pthread -rdynamic -m64  -Wl,-soname=rvo2.node -o Release/obj.target/rvo2.node -Wl,--start-group Release/obj.target/rvo2/rvo2_wrap.o Release/obj.target/rvo2/src/Agent.o Release/obj.target/rvo2/src/KdTree.o Release/obj.target/rvo2/src/Obstacle.o Release/obj.target/rvo2/src/RVOSimulator.o -Wl,--end-group -lgomp

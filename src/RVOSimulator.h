@@ -445,6 +445,7 @@ namespace RVO {
 		 */
 		int removeAgent(size_t agentNo);
 
+		int getUid(size_t agentNo);
 		int getIndex(int uid);
 
 		/**

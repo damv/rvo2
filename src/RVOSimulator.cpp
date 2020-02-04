@@ -313,6 +313,11 @@ namespace RVO {
 		return -1;
 	}
 
+	int RVOSimulator::getUid(size_t agentNo)
+	{
+		return agents_[agentNo]->uid_;
+	}
+
 	int RVOSimulator::removeAgent(size_t agentNo)
 	{
 		delete agents_[agentNo];

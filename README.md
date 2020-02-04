@@ -55,10 +55,16 @@ Optionally, copy folder `c:\Users\USERNAME\.node-gyp\6.9.5\x64` to `c:\Users\USE
 
 ### Compiling the library
 
+Patch SWIG :
+https://github.com/eclipse/mraa/blob/master/docs/building.md#javascript-bindings-for-nodejs-700
+
 ```console
 swig -javascript -node -c++ rvo2.i
 ```
 Open the generated `rvo2_wrap.cxx` in your favorite editor and replace `std::vector< Line >` with `std::vector< RVO::Line >`.
+```console
+sed -i 's/std::vector< Line >/std::vector< RVO::Line >/g' rvo2_wrap.cxx
+```
 
 Finally, compile the library with:
 ```console

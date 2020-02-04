@@ -1849,12 +1849,11 @@ SWIG_From_size_t  (size_t value)
 }
 
 
-#include <typeinfo>
-#include <stdexcept>
-
-
-#include <vector>
-#include <stdexcept>
+SWIGINTERNINLINE
+v8::Handle<v8::Value> SWIG_From_int  (int value)
+{
+  return SWIGV8_INT32_NEW(value);
+}
 
 
 SWIGINTERN
@@ -1868,6 +1867,14 @@ int SWIG_AsVal_int (v8::Handle<v8::Value> valRef, int* val)
   return SWIG_OK;
 }
 
+
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <vector>
+#include <stdexcept>
+
 SWIGINTERN std::vector< int >::const_reference std_vector_Sl_int_Sg__get(std::vector< int > *self,int i){
                 int size = int(self->size());
                 if (i>=0 && i<size)
@@ -1875,13 +1882,6 @@ SWIGINTERN std::vector< int >::const_reference std_vector_Sl_int_Sg__get(std::ve
                 else
                     throw std::out_of_range("vector index out of range");
             }
-
-SWIGINTERNINLINE
-v8::Handle<v8::Value> SWIG_From_int  (int value)
-{
-  return SWIGV8_INT32_NEW(value);
-}
-
 SWIGINTERN void std_vector_Sl_int_Sg__set(std::vector< int > *self,int i,std::vector< int >::value_type const &val){
                 int size = int(self->size());
                 if (i>=0 && i<size)
@@ -5011,6 +5011,80 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RVOSimulator_removeAgent(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RVO::RVOSimulator *arg1 = (RVO::RVOSimulator *) 0 ;
+  size_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RVOSimulator_removeAgent.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RVO__RVOSimulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RVOSimulator_removeAgent" "', argument " "1"" of type '" "RVO::RVOSimulator *""'"); 
+  }
+  arg1 = (RVO::RVOSimulator *)(argp1);
+  ecode2 = SWIG_AsVal_size_t(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_removeAgent" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = (size_t)(val2);
+  result = (int)(arg1)->removeAgent(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RVOSimulator_getIndex(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RVO::RVOSimulator *arg1 = (RVO::RVOSimulator *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RVOSimulator_getIndex.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RVO__RVOSimulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RVOSimulator_getIndex" "', argument " "1"" of type '" "RVO::RVOSimulator *""'"); 
+  }
+  arg1 = (RVO::RVOSimulator *)(argp1);
+  ecode2 = SWIG_AsVal_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_getIndex" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = (int)(val2);
+  result = (int)(arg1)->getIndex(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RVOSimulator_setAgentDefaults__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
@@ -7823,6 +7897,8 @@ SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "getPrevObstacleVertexNo",
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "getTimeStep", _wrap_RVOSimulator_getTimeStep);
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "processObstacles", _wrap_RVOSimulator_processObstacles);
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "queryVisibility", _wrap_RVOSimulator__wrap_RVOSimulator_queryVisibility);
+SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "removeAgent", _wrap_RVOSimulator_removeAgent);
+SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "getIndex", _wrap_RVOSimulator_getIndex);
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "setAgentDefaults", _wrap_RVOSimulator__wrap_RVOSimulator_setAgentDefaults);
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "setAgentMaxNeighbors", _wrap_RVOSimulator_setAgentMaxNeighbors);
 SWIGV8_AddMemberFunction(_exports_RVOSimulator_class, "setAgentMaxSpeed", _wrap_RVOSimulator_setAgentMaxSpeed);

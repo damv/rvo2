@@ -443,10 +443,10 @@ namespace RVO {
 		 * \param      agentNo         The number of the agent who must be removed.
 		 * \return     0 if the agent has been successfully removed, -1 else.
 		 */
-		int removeAgent(size_t agentNo);
+		size_t removeAgent(size_t agentNo);
 
-		int getUid(size_t agentNo);
-		size_t getIndex(int uid);
+		size_t getUid(size_t agentNo);
+		size_t getIndex(size_t uid);
 
 		/**
 		 * \brief      Sets the default properties for any new agent that is

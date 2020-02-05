@@ -1849,11 +1849,12 @@ SWIG_From_size_t  (size_t value)
 }
 
 
-SWIGINTERNINLINE
-v8::Handle<v8::Value> SWIG_From_int  (int value)
-{
-  return SWIGV8_INT32_NEW(value);
-}
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <vector>
+#include <stdexcept>
 
 
 SWIGINTERN
@@ -1867,14 +1868,6 @@ int SWIG_AsVal_int (v8::Handle<v8::Value> valRef, int* val)
   return SWIG_OK;
 }
 
-
-#include <typeinfo>
-#include <stdexcept>
-
-
-#include <vector>
-#include <stdexcept>
-
 SWIGINTERN std::vector< int >::const_reference std_vector_Sl_int_Sg__get(std::vector< int > *self,int i){
                 int size = int(self->size());
                 if (i>=0 && i<size)
@@ -1882,6 +1875,13 @@ SWIGINTERN std::vector< int >::const_reference std_vector_Sl_int_Sg__get(std::ve
                 else
                     throw std::out_of_range("vector index out of range");
             }
+
+SWIGINTERNINLINE
+v8::Handle<v8::Value> SWIG_From_int  (int value)
+{
+  return SWIGV8_INT32_NEW(value);
+}
+
 SWIGINTERN void std_vector_Sl_int_Sg__set(std::vector< int > *self,int i,std::vector< int >::value_type const &val){
                 int size = int(self->size());
                 if (i>=0 && i<size)
@@ -5021,7 +5021,7 @@ static SwigV8ReturnValue _wrap_RVOSimulator_removeAgent(const SwigV8Arguments &a
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
-  int result;
+  size_t result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RVOSimulator_removeAgent.");
   
@@ -5035,8 +5035,8 @@ static SwigV8ReturnValue _wrap_RVOSimulator_removeAgent(const SwigV8Arguments &a
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_removeAgent" "', argument " "2"" of type '" "size_t""'");
   } 
   arg2 = (size_t)(val2);
-  result = (int)(arg1)->removeAgent(arg2);
-  jsresult = SWIG_From_int((int)(result));
+  result = (arg1)->removeAgent(arg2);
+  jsresult = SWIG_From_size_t((size_t)(result));
   
   
   
@@ -5058,7 +5058,7 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getUid(const SwigV8Arguments &args) 
   int res1 = 0 ;
   size_t val2 ;
   int ecode2 = 0 ;
-  int result;
+  size_t result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RVOSimulator_getUid.");
   
@@ -5072,8 +5072,8 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getUid(const SwigV8Arguments &args) 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_getUid" "', argument " "2"" of type '" "size_t""'");
   } 
   arg2 = (size_t)(val2);
-  result = (int)(arg1)->getUid(arg2);
-  jsresult = SWIG_From_int((int)(result));
+  result = (arg1)->getUid(arg2);
+  jsresult = SWIG_From_size_t((size_t)(result));
   
   
   
@@ -5090,10 +5090,10 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getIndex(const SwigV8Arguments &args
   
   v8::Handle<v8::Value> jsresult;
   RVO::RVOSimulator *arg1 = (RVO::RVOSimulator *) 0 ;
-  int arg2 ;
+  size_t arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
+  size_t val2 ;
   int ecode2 = 0 ;
   size_t result;
   
@@ -5104,11 +5104,11 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getIndex(const SwigV8Arguments &args
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RVOSimulator_getIndex" "', argument " "1"" of type '" "RVO::RVOSimulator *""'"); 
   }
   arg1 = (RVO::RVOSimulator *)(argp1);
-  ecode2 = SWIG_AsVal_int(args[0], &val2);
+  ecode2 = SWIG_AsVal_size_t(args[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_getIndex" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_getIndex" "', argument " "2"" of type '" "size_t""'");
   } 
-  arg2 = (int)(val2);
+  arg2 = (size_t)(val2);
   result = (arg1)->getIndex(arg2);
   jsresult = SWIG_From_size_t((size_t)(result));
   

@@ -102,7 +102,7 @@ namespace RVO {
 		Vector2 velocity_;
 
 		size_t id_;
-		int uid_;
+		size_t uid_;
 
 		friend class KdTree;
 		friend class RVOSimulator;

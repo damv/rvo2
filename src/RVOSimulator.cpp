@@ -118,6 +118,8 @@ namespace RVO {
 
 		agent->id_ = agents_.size();
 
+		agent->uid_ = uid_++;
+
 		agents_.push_back(agent);
 
 		return agents_.size() - 1;
@@ -304,7 +306,7 @@ namespace RVO {
 		return kdTree_->queryVisibility(point1, point2, radius);
 	}
 
-	size_t RVOSimulator::getIndex(int uid)
+	size_t RVOSimulator::getIndex(size_t uid)
 	{
 		size_t i;
 		for (i = 0; i < agents_.size(); ++i)
@@ -313,12 +315,12 @@ namespace RVO {
 		return i;
 	}
 
-	int RVOSimulator::getUid(size_t agentNo)
+	size_t RVOSimulator::getUid(size_t agentNo)
 	{
 		return agents_[agentNo]->uid_;
 	}
 
-	int RVOSimulator::removeAgent(size_t agentNo)
+	size_t RVOSimulator::removeAgent(size_t agentNo)
 	{
 		delete agents_[agentNo];
 		agents_.erase(agents_.begin() + agentNo);

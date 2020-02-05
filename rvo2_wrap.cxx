@@ -5095,7 +5095,7 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getIndex(const SwigV8Arguments &args
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int result;
+  size_t result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RVOSimulator_getIndex.");
   
@@ -5109,8 +5109,8 @@ static SwigV8ReturnValue _wrap_RVOSimulator_getIndex(const SwigV8Arguments &args
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RVOSimulator_getIndex" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (int)(arg1)->getIndex(arg2);
-  jsresult = SWIG_From_int((int)(result));
+  result = (arg1)->getIndex(arg2);
+  jsresult = SWIG_From_size_t((size_t)(result));
   
   
   

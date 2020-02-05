@@ -304,13 +304,13 @@ namespace RVO {
 		return kdTree_->queryVisibility(point1, point2, radius);
 	}
 
-	int RVOSimulator::getIndex(int uid)
+	size_t RVOSimulator::getIndex(int uid)
 	{
-		for (size_t i = 0; i < agents_.size(); ++i) {
+		size_t i;
+		for (i = 0; i < agents_.size(); ++i)
 			if (agents_[i]->uid_ == uid)
-				return i;
-		}
-		return -1;
+				break;
+		return i;
 	}
 
 	int RVOSimulator::getUid(size_t agentNo)

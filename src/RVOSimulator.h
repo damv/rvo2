@@ -446,7 +446,7 @@ namespace RVO {
 		int removeAgent(size_t agentNo);
 
 		int getUid(size_t agentNo);
-		int getIndex(int uid);
+		size_t getIndex(int uid);
 
 		/**
 		 * \brief      Sets the default properties for any new agent that is
